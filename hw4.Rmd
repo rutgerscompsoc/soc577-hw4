@@ -148,14 +148,14 @@ What do these metrics tell us about the performance of the classifier?
 
 Q7. In the previous example, and in the lecture on text classification, we have considered models trained on sparse representations. Let's examine how the model might perform if we have a dense representation of each text. In this case we will use a pre-trained word embedding (the same one as lecture 8).
 
-`embedding.tsv` is a tibble containing the subset of the word vectors corresponding to the tokens in this dataset. You can see how it was created by viewing `hw4_custom_embedding.R`.
+You will need to download `embedding.tsv` from Google Drive (https://drive.google.com/file/d/1AN92HRgbS4rfN8xlq1qK9LxwTRTnXcBY/view?usp=sharing) and add it to the `data` folder. The file contains the subset of the word vectors corresponding to the tokens in this dataset but was slightly too large to be stored on Github. You can see how it was created by viewing `hw4_custom_embedding.R`.
 
 Modify the recipe to use the embedding as the final stage. Look up the documentation for the appropriate step. Each document should be represented as the average over the embeddings of its constituent words. Note that we the stemming step has been removed as this would prevent us from matching words to their embeddings. There is also no need to add N-grams. Once you have modified the recipe you then need to update the recipe used in the workflow.
 
 Finally, run the remaining steps to train the model and view performance metrics. This may also take a couple of minutes.
 ```{r q7, echo=TRUE, tidy=TRUE}
-# Loading embeddings
-emb <- read_tsv('embedding.tsv') %>% as_tibble()
+# Loading embeddings (you must download the file using the link above)
+emb <- read_tsv('data/embedding.tsv') %>% as_tibble() 
 
 show_recipe_dense <- recipe(show ~ text, data  = train) %>% 
     step_tokenize(text) %>%
