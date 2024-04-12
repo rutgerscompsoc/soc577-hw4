@@ -132,7 +132,7 @@ Q7. Let's try to perform the classification using an alternative model. Specific
 
 Complete the code below to specify the model and parameter grid. The model should have the following components: 
 
-    - The number of hidden units and dropout should be tunable, each with two levels. 
+    - The number of hidden units and dropout should be tunable.
     - For the number of hidden units, test three different values between 10 and 100. 
     - For dropout, evaluate models with values of 0 and 0.05. 
     - The training epochs should be fixed to 75. 
