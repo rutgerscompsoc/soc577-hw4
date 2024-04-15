@@ -55,19 +55,19 @@ data <- data %>%
 ## Questions
 
 Q1. Before doing any modeling, examine whether there are any differences between the tweets by Republicans and Democrats with respect to how much they tweet. In the cell below, write a line of code to calculate the total number of tweets written by each group.
-```{r q1, echo=FALSE, tidy=TRUE, eval=TRUE, include=FALSE}
+```{r q1, echo=TRUE, tidy=TRUE, eval=TRUE, include=FALSE}
 
 ```
 
 To make it a fair prediction task, we can take identically sized random samples from each group. Given the 50:50 class distribution, our baseline is a random guess. Run the chunk below then proceed.
-```{r sampling, echo=FALSE, tidy=TRUE, eval=TRUE, include=FALSE}
+```{r sampling, echo=TRUE, tidy=TRUE, eval=TRUE, include=FALSE}
 rep.sample <- sample_n(data %>% filter(party == "Republican"), size=2000)
 dem.sample <- sample_n(data %>% filter(party == "Democrat"), size=2000)
 data <- bind_rows(rep.sample, dem.sample)
 ```
 
 Q2. Now that we have our dataset, we can start to construct the modeling pipeline. The first step is to take a test-train split. Add arguments to `initial_split` to create a split where 20% of the data are held-out for testing and the classes are evenly balanced across test and training sets
-```{r q2, echo=FALSE, tidy=TRUE, eval=TRUE, include=FALSE}
+```{r q2, echo=TRUE, tidy=TRUE, eval=TRUE, include=FALSE}
 data_split <- initial_split()
 train <- training(data_split)
 test <- testing(data_split)
@@ -82,7 +82,7 @@ Q3. Now we want to put together a recipe. The first line specifies that we are m
   - Construct TF-IDF matrix
 
 You can use `prep` and `bake` to run this process and view the resulting feature matrix.
-```{r q3, echo=FALSE, tidy=TRUE, eval=TRUE, include=FALSE}
+```{r q3, echo=TRUE, tidy=TRUE, eval=TRUE, include=FALSE}
 party_recipe <- recipe(party ~ text, data  = train) %>% 
     # Add your steps here
 
@@ -91,7 +91,7 @@ head(prep(party_recipe, train) %>% bake(test))
 ```
 
 Q4. Let's add a model and put together a workflow. We will use a logistic regression with a LASSO penalty. Add the recipe and the model to the workflow `wf` then answer the question below.
-```{r q4, echo=FALSE, tidy=TRUE, eval=TRUE, include=FALSE}
+```{r q4, echo=TRUE, tidy=TRUE, eval=TRUE, include=FALSE}
 # Do not modify the model
 lasso <- logistic_reg(penalty = 0.01, mixture = 1) %>%
   set_mode("classification") %>%
