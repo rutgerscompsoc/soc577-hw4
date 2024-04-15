@@ -54,7 +54,7 @@ data <- data %>%
 
 ## Questions
 
-Q1. Before doing any modeling, exanube whether there are any differences between the tweets by Republicans and Democrats with respect to how much they tweet. In the cell below, write a line of code to calculate the total number of tweets written by each group.
+Q1. Before doing any modeling, examine whether there are any differences between the tweets by Republicans and Democrats with respect to how much they tweet. In the cell below, write a line of code to calculate the total number of tweets written by each group.
 ```{r q1, echo=FALSE, tidy=TRUE, eval=TRUE, include=FALSE}
 
 ```
