@@ -128,7 +128,7 @@ Interpret the precision and recall metrics.
 Answer:
 
 
-Q7. Let's try to perform the classification using an alternative model. Specifically, using a single-layer neural network from the `keras` package. The documentation for `parsnip` (part of `tidymodels`) explains how to implement a neural network using the `mlp` function: https://parsnip.tidymodels.org/reference/mlp.html
+Q7. Let's try to perform the classification using an alternative model. Specifically, using a single-layer neural network from the `brulee` package. The documentation for `parsnip` (part of `tidymodels`) explains how to implement a neural network using the `mlp` function: https://parsnip.tidymodels.org/reference/mlp.html
 
 Complete the code below to specify the model and parameter grid. The model should have the following components: 
 
@@ -140,14 +140,14 @@ Complete the code below to specify the model and parameter grid. The model shoul
 
 Once you have completed the code, answer the questions below then execute the chunk afterwards to run the models.
 ```{r q7a, echo=TRUE, tidy=TRUE}
-# install.packages("keras") # Uncomment and run to install keras. Remove before knitting final submission
-# Note: `keras` does not work for some users. Try `brulee` instead. Replace package name below and in `set_engine` call. The first time `brulee` is loaded respond "Yes" to the question in the console to download package files.
-library(keras)
+# install.packages("brulee") # Uncomment and run to install brulee. Remove before knitting final submission
+# Note: The first time `brulee` is loaded respond "Yes" to the question in the console to download package files.
+library(brulee)
 
 # Specify the arguments to the `mlp` function to set model parameters
 neural_network <- mlp() %>%
   set_mode("classification") %>%
-  set_engine("keras") 
+  set_engine("brulee") 
 
 # Specify a parameter grid
 param_grid <- grid_regular(
